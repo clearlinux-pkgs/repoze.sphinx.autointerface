@@ -6,10 +6,10 @@
 #
 Name     : repoze.sphinx.autointerface
 Version  : 0.8
-Release  : 6
+Release  : 8
 URL      : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz
-Source99 : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz.asc
+Source1 : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz.asc
 Summary  : Sphinx extension: auto-generates API docs from Zope interfaces
 Group    : Development/Tools
 License  : ZPL-2.1
@@ -26,13 +26,11 @@ BuildRequires : zope.interface
 
 %description
 ==================================
-Overview
---------
-Thie package defines an extension for the
-`Sphinx <http://sphinx.pocool.org>`_ documentation system.  The extension
-allows generation of API documentation by introspection of
-`zope.interface <http://pypi.python.org/pypi/zope.interface>`_ instances in
-code.
+        
+        Overview
+        --------
+        
+        Thie package defines an extension for the
 
 %package license
 Summary: license components for the repoze.sphinx.autointerface package.
@@ -62,13 +60,19 @@ python3 components for the repoze.sphinx.autointerface package.
 
 %prep
 %setup -q -n repoze.sphinx.autointerface-0.8
+cd %{_builddir}/repoze.sphinx.autointerface-0.8
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1551037473
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1574291422
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -76,11 +80,12 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/repoze.sphinx.autointerface
-cp LICENSE.txt %{buildroot}/usr/share/package-licenses/repoze.sphinx.autointerface/LICENSE.txt
+cp %{_builddir}/repoze.sphinx.autointerface-0.8/LICENSE.txt %{buildroot}/usr/share/package-licenses/repoze.sphinx.autointerface/1c2024cb6cdcf19ca3e2c81c82936bc7596799c7
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -91,7 +96,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/repoze.sphinx.autointerface/LICENSE.txt
+/usr/share/package-licenses/repoze.sphinx.autointerface/1c2024cb6cdcf19ca3e2c81c82936bc7596799c7
 
 %files python
 %defattr(-,root,root,-)
