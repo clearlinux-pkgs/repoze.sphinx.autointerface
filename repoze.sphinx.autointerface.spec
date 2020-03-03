@@ -6,10 +6,10 @@
 #
 Name     : repoze.sphinx.autointerface
 Version  : 0.8
-Release  : 11
+Release  : 12
 URL      : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz
-Source1 : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz.asc
+Source1  : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz.asc
 Summary  : Sphinx extension: auto-generates API docs from Zope interfaces
 Group    : Development/Tools
 License  : ZPL-2.1
@@ -26,11 +26,13 @@ BuildRequires : zope.interface
 
 %description
 ==================================
-        
-        Overview
-        --------
-        
-        Thie package defines an extension for the
+Overview
+--------
+Thie package defines an extension for the
+`Sphinx <http://sphinx.pocool.org>`_ documentation system.  The extension
+allows generation of API documentation by introspection of
+`zope.interface <http://pypi.python.org/pypi/zope.interface>`_ instances in
+code.
 
 %package license
 Summary: license components for the repoze.sphinx.autointerface package.
@@ -53,6 +55,7 @@ python components for the repoze.sphinx.autointerface package.
 Summary: python3 components for the repoze.sphinx.autointerface package.
 Group: Default
 Requires: python3-core
+Provides: pypi(repoze.sphinx.autointerface)
 
 %description python3
 python3 components for the repoze.sphinx.autointerface package.
@@ -67,7 +70,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1574291422
+export SOURCE_DATE_EPOCH=1583219038
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
