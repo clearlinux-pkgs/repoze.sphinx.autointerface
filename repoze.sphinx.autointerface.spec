@@ -6,7 +6,7 @@
 #
 Name     : repoze.sphinx.autointerface
 Version  : 0.8
-Release  : 13
+Release  : 14
 URL      : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz
 Source1  : https://files.pythonhosted.org/packages/8f/65/ea18d09c6847b3a381e16c89f26de0ddcdf0bdb8d05f4581e4df9b7033fd/repoze.sphinx.autointerface-0.8.tar.gz.asc
